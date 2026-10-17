@@ -55,7 +55,7 @@ def load_pipeline(path: str, modified_time: int):
 def show_image(filename: str, caption: str) -> None:
     image_path = FIGURE_DIR / filename
     if image_path.is_file():
-        st.image(str(image_path), caption=caption, use_container_width=True)
+        st.image(str(image_path), caption=caption, width="stretch")
     else:
         st.info(f"Chart is not available yet: {filename}. Run EDA/evaluation to generate it.")
 
@@ -150,7 +150,7 @@ with overview_tab:
             }
             for name, values in evaluation.items()
         ]
-        st.dataframe(pd.DataFrame(overview_rows).set_index("Model"), use_container_width=True)
+        st.dataframe(pd.DataFrame(overview_rows).set_index("Model"), width="stretch")
 
 with data_tab:
     st.subheader("Data explorer")
@@ -177,7 +177,7 @@ with data_tab:
 
     if selected_data is not None:
         st.write(f"Dimensions: **{selected_data.shape[0]:,} rows × {selected_data.shape[1]} columns**")
-        st.dataframe(selected_data.head(20), use_container_width=True)
+        st.dataframe(selected_data.head(20), width="stretch")
         st.markdown("#### Column descriptions")
         descriptions = {
             "employee_id": "Synthetic row identifier; excluded from model inputs.",
@@ -195,7 +195,7 @@ with data_tab:
                     "dtype": [str(dtype) for dtype in selected_data.dtypes],
                 }
             ),
-            use_container_width=True,
+            width="stretch",
         )
         missing = selected_data.isna().sum().loc[lambda counts: counts > 0].rename("missing_count")
         st.markdown("#### Data quality")
@@ -223,7 +223,7 @@ with eda_tab:
                 category_orders={TARGET_COLUMN: TARGET_CLASSES},
                 title="Synthetic target class distribution",
             ),
-            use_container_width=True,
+            width="stretch",
         )
         show_image("department_target_distribution.png", "Target-category counts by department")
         show_image("training_hours_vs_target.png", "Training hours by generated category")
@@ -256,7 +256,7 @@ with evaluation_tab:
                     "Macro-F1": values["macro_f1"],
                 }
             )
-        st.dataframe(pd.DataFrame(comparison_rows).set_index("Model"), use_container_width=True)
+        st.dataframe(pd.DataFrame(comparison_rows).set_index("Model"), width="stretch")
         show_image("model_comparison_macro_f1.png", "Actual model comparison on the fixed held-out test split")
         model_names = list(evaluation)
         selected_eval_model = st.selectbox("Confusion matrix and class report", model_names, key="evaluation_model")
@@ -273,14 +273,14 @@ with evaluation_tab:
                 index=["Actual Low", "Actual Medium", "Actual High"],
                 columns=["Predicted Low", "Predicted Medium", "Predicted High"],
             ),
-            use_container_width=True,
+            width="stretch",
         )
         class_rows = [
             {"Class": label, **values}
             for label, values in model_metrics["per_class"].items()
             if label in TARGET_CLASSES
         ]
-        st.dataframe(pd.DataFrame(class_rows).set_index("Class"), use_container_width=True)
+        st.dataframe(pd.DataFrame(class_rows).set_index("Class"), width="stretch")
         classification_path = REPORT_DIR / "classification_report.txt"
         if classification_path.is_file():
             with st.expander("Saved classification report"):
@@ -372,11 +372,11 @@ with prediction_tab:
                         st.markdown("**Model probability estimates (not certainty):**")
                         st.bar_chart(pd.Series(result["probabilities"], name="Model probability"))
                     st.markdown("**Relevant provided input signals**")
-                    st.dataframe(pd.DataFrame(summary["relevant_input_signals"]), use_container_width=True)
+                    st.dataframe(pd.DataFrame(summary["relevant_input_signals"]), width="stretch")
                     if summary["top_global_model_related_features"]:
                         st.markdown("**Top global model-related features**")
                         st.caption("These are dataset-level associations, not explanations of this individual result.")
-                        st.dataframe(pd.DataFrame(summary["top_global_model_related_features"]), use_container_width=True)
+                        st.dataframe(pd.DataFrame(summary["top_global_model_related_features"]), width="stretch")
                     if include_development_actions:
                         st.markdown("**Possible development actions for human discussion**")
                         for action in summary["development_actions"]:
@@ -396,7 +396,7 @@ with explainability_tab:
                 "permutation_feature_importance.png",
                 "Features whose shuffling changes held-out macro-F1 the most",
             )
-            st.dataframe(importance, use_container_width=True)
+            st.dataframe(importance, width="stretch")
             st.markdown(
                 """
                 **How to read this:** permutation importance measures how much the fitted model's
@@ -426,7 +426,7 @@ with fairness_tab:
                 continue
             groups = audit.get("groups", [])
             count_rows = [{"Group": group["group"], "Records": group["count"], "Status": group["status"]} for group in groups]
-            st.dataframe(pd.DataFrame(count_rows), use_container_width=True)
+            st.dataframe(pd.DataFrame(count_rows), width="stretch")
             metric_rows = [
                 {
                     "Group": group["group"],
@@ -449,7 +449,7 @@ with fairness_tab:
                 if group.get("status") == "reported"
             ]
             if metric_rows:
-                st.dataframe(pd.DataFrame(metric_rows).set_index("Group"), use_container_width=True)
+                st.dataframe(pd.DataFrame(metric_rows).set_index("Group"), width="stretch")
             for group in groups:
                 if group.get("warning"):
                     st.warning(f"{group['group']}: {group['warning']}")
@@ -461,7 +461,7 @@ with fairness_tab:
                                 index=[f"Actual {label}" for label in TARGET_CLASSES],
                                 columns=[f"Predicted {label}" for label in TARGET_CLASSES],
                             ),
-                            use_container_width=True,
+                            width="stretch",
                         )
             st.write("High-category error-rate differences (max minus min):", audit.get("error_rate_differences", {}))
         st.markdown(
