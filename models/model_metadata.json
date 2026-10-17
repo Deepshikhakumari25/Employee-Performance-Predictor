@@ -1,0 +1,71 @@
+{
+  "selected_model": "Logistic Regression",
+  "feature_columns": [
+    "experience_years",
+    "manager_tenure",
+    "projects_count",
+    "avg_task_delay_days",
+    "on_time_delivery_rate",
+    "bug_count",
+    "code_review_score",
+    "qa_defect_density",
+    "story_points_completed",
+    "billable_hours_ratio",
+    "training_hours",
+    "certifications_count",
+    "internal_hackathons_participated",
+    "sick_days",
+    "unplanned_absences",
+    "avg_login_hours",
+    "peer_feedback_score",
+    "manager_score",
+    "kudos_count",
+    "promotions_in_2y",
+    "department",
+    "job_level"
+  ],
+  "numeric_columns": [
+    "experience_years",
+    "manager_tenure",
+    "projects_count",
+    "avg_task_delay_days",
+    "on_time_delivery_rate",
+    "bug_count",
+    "code_review_score",
+    "qa_defect_density",
+    "story_points_completed",
+    "billable_hours_ratio",
+    "training_hours",
+    "certifications_count",
+    "internal_hackathons_participated",
+    "sick_days",
+    "unplanned_absences",
+    "avg_login_hours",
+    "peer_feedback_score",
+    "manager_score",
+    "kudos_count",
+    "promotions_in_2y"
+  ],
+  "categorical_columns": [
+    "department",
+    "job_level"
+  ],
+  "cv_macro_f1": {
+    "Baseline": 0.3339931336859516,
+    "Logistic Regression": 0.47658027723923685,
+    "Random Forest": 0.4672159234545468
+  },
+  "train_shape": [
+    1760,
+    22
+  ],
+  "test_shape": [
+    440,
+    22
+  ],
+  "target_classes": [
+    "High",
+    "Low",
+    "Medium"
+  ]
+}

@@ -1,0 +1,8 @@
+AI-Powered Employee Performance Predictor EDA Summary
+Rows: 2200
+Columns: 26
+Missing values: 0
+Duplicate rows: 0
+Target labels are synthetic and intended for educational classification, not real HR decisions.
+The synthetic generator uses measurable work-quality signals such as delivery rate, manager feedback, and training hours.
+Correlation does not imply causation; these plots highlight patterns in the generated data.

@@ -1,0 +1,536 @@
+{
+  "status": "completed",
+  "data_notice": "Synthetic-data demonstration; results do not establish real-world fairness.",
+  "minimum_group_size": 20,
+  "classes": [
+    "High",
+    "Medium",
+    "Low"
+  ],
+  "metrics_explanation": {
+    "predicted_high_rate": "Share of group records predicted High; rate parity alone is not a fairness guarantee.",
+    "precision_recall_f1": "Macro averages over the classes observed in that group; small groups are withheld.",
+    "high_false_positive_rate": "Share of actual non-High records predicted High.",
+    "high_false_negative_rate": "Share of actual High records predicted non-High.",
+    "limitations": "These metrics are descriptive, sensitive to group size and label quality, and do not capture all fairness concerns. Similar values do not prove the system is fair; differences do not explain their cause. Do not use them alone for consequential decisions."
+  },
+  "audits": {
+    "gender": {
+      "status": "completed",
+      "groups": [
+        {
+          "group": "Man",
+          "count": 156,
+          "status": "reported",
+          "predicted_high_rate": 0.40384615384615385,
+          "macro_precision": 0.4324773397519299,
+          "macro_recall": 0.45591304306488495,
+          "macro_f1": 0.4346966051857792,
+          "high_precision": 0.4126984126984127,
+          "high_recall": 0.49056603773584906,
+          "high_false_positive_rate": 0.3592233009708738,
+          "high_false_negative_rate": 0.5094339622641509,
+          "actual_class_counts": {
+            "High": 53,
+            "Medium": 54,
+            "Low": 49
+          },
+          "confusion_matrix": [
+            [
+              26,
+              15,
+              12
+            ],
+            [
+              27,
+              11,
+              16
+            ],
+            [
+              10,
+              6,
+              33
+            ]
+          ]
+        },
+        {
+          "group": "Non-binary",
+          "count": 143,
+          "status": "reported",
+          "predicted_high_rate": 0.34265734265734266,
+          "macro_precision": 0.44914101233713827,
+          "macro_recall": 0.4633734196731421,
+          "macro_f1": 0.4526396035829998,
+          "high_precision": 0.6326530612244898,
+          "high_recall": 0.62,
+          "high_false_positive_rate": 0.1935483870967742,
+          "high_false_negative_rate": 0.38,
+          "actual_class_counts": {
+            "High": 50,
+            "Medium": 46,
+            "Low": 47
+          },
+          "confusion_matrix": [
+            [
+              31,
+              11,
+              8
+            ],
+            [
+              13,
+              9,
+              24
+            ],
+            [
+              5,
+              15,
+              27
+            ]
+          ]
+        },
+        {
+          "group": "Woman",
+          "count": 141,
+          "status": "reported",
+          "predicted_high_rate": 0.425531914893617,
+          "macro_precision": 0.587699902656098,
+          "macro_recall": 0.5930235924156897,
+          "macro_f1": 0.5838172180816804,
+          "high_precision": 0.6166666666666667,
+          "high_recall": 0.7872340425531915,
+          "high_false_positive_rate": 0.24468085106382978,
+          "high_false_negative_rate": 0.2127659574468085,
+          "actual_class_counts": {
+            "High": 47,
+            "Medium": 45,
+            "Low": 49
+          },
+          "confusion_matrix": [
+            [
+              37,
+              5,
+              5
+            ],
+            [
+              14,
+              18,
+              13
+            ],
+            [
+              9,
+              11,
+              29
+            ]
+          ]
+        }
+      ],
+      "error_rate_differences": {
+        "high_false_positive_rate_max_minus_min": 0.1656749138740996,
+        "high_false_negative_rate_max_minus_min": 0.29666800481734246
+      }
+    },
+    "department": {
+      "status": "completed",
+      "groups": [
+        {
+          "group": "Engineering",
+          "count": 60,
+          "status": "reported",
+          "predicted_high_rate": 0.26666666666666666,
+          "macro_precision": 0.619480056980057,
+          "macro_recall": 0.6127946127946128,
+          "macro_f1": 0.6133470932232542,
+          "high_precision": 0.6875,
+          "high_recall": 0.6111111111111112,
+          "high_false_positive_rate": 0.11904761904761904,
+          "high_false_negative_rate": 0.3888888888888889,
+          "actual_class_counts": {
+            "High": 18,
+            "Medium": 20,
+            "Low": 22
+          },
+          "confusion_matrix": [
+            [
+              11,
+              2,
+              5
+            ],
+            [
+              5,
+              10,
+              5
+            ],
+            [
+              0,
+              6,
+              16
+            ]
+          ]
+        },
+        {
+          "group": "Finance",
+          "count": 70,
+          "status": "reported",
+          "predicted_high_rate": 0.5285714285714286,
+          "macro_precision": 0.5500931966449207,
+          "macro_recall": 0.465296442687747,
+          "macro_f1": 0.4244852062688875,
+          "high_precision": 0.4864864864864865,
+          "high_recall": 0.72,
+          "high_false_positive_rate": 0.4222222222222222,
+          "high_false_negative_rate": 0.28,
+          "actual_class_counts": {
+            "High": 25,
+            "Medium": 23,
+            "Low": 22
+          },
+          "confusion_matrix": [
+            [
+              18,
+              1,
+              6
+            ],
+            [
+              9,
+              3,
+              11
+            ],
+            [
+              10,
+              0,
+              12
+            ]
+          ]
+        },
+        {
+          "group": "HR",
+          "count": 60,
+          "status": "reported",
+          "predicted_high_rate": 0.45,
+          "macro_precision": 0.3218694885361552,
+          "macro_recall": 0.3655037772684831,
+          "macro_f1": 0.335999312005504,
+          "high_precision": 0.37037037037037035,
+          "high_recall": 0.47619047619047616,
+          "high_false_positive_rate": 0.4358974358974359,
+          "high_false_negative_rate": 0.5238095238095238,
+          "actual_class_counts": {
+            "High": 21,
+            "Medium": 22,
+            "Low": 17
+          },
+          "confusion_matrix": [
+            [
+              10,
+              6,
+              5
+            ],
+            [
+              13,
+              2,
+              7
+            ],
+            [
+              4,
+              4,
+              9
+            ]
+          ]
+        },
+        {
+          "group": "Marketing",
+          "count": 50,
+          "status": "reported",
+          "predicted_high_rate": 0.54,
+          "macro_precision": 0.4523809523809524,
+          "macro_recall": 0.45893141945773525,
+          "macro_f1": 0.44710939179024284,
+          "high_precision": 0.5555555555555556,
+          "high_recall": 0.75,
+          "high_false_positive_rate": 0.4,
+          "high_false_negative_rate": 0.25,
+          "actual_class_counts": {
+            "High": 20,
+            "Medium": 19,
+            "Low": 11
+          },
+          "confusion_matrix": [
+            [
+              15,
+              4,
+              1
+            ],
+            [
+              10,
+              5,
+              4
+            ],
+            [
+              2,
+              5,
+              4
+            ]
+          ]
+        },
+        {
+          "group": "Operations",
+          "count": 79,
+          "status": "reported",
+          "predicted_high_rate": 0.2911392405063291,
+          "macro_precision": 0.5405329593267881,
+          "macro_recall": 0.5440917107583775,
+          "macro_f1": 0.5414759540255393,
+          "high_precision": 0.6086956521739131,
+          "high_recall": 0.5833333333333334,
+          "high_false_positive_rate": 0.16363636363636364,
+          "high_false_negative_rate": 0.4166666666666667,
+          "actual_class_counts": {
+            "High": 24,
+            "Medium": 27,
+            "Low": 28
+          },
+          "confusion_matrix": [
+            [
+              14,
+              9,
+              1
+            ],
+            [
+              6,
+              10,
+              11
+            ],
+            [
+              3,
+              6,
+              19
+            ]
+          ]
+        },
+        {
+          "group": "Product",
+          "count": 65,
+          "status": "reported",
+          "predicted_high_rate": 0.4153846153846154,
+          "macro_precision": 0.3703703703703704,
+          "macro_recall": 0.5064102564102564,
+          "macro_f1": 0.4278197208876688,
+          "high_precision": 0.5555555555555556,
+          "high_recall": 0.75,
+          "high_false_positive_rate": 0.26666666666666666,
+          "high_false_negative_rate": 0.25,
+          "actual_class_counts": {
+            "High": 20,
+            "Medium": 19,
+            "Low": 26
+          },
+          "confusion_matrix": [
+            [
+              15,
+              0,
+              5
+            ],
+            [
+              8,
+              0,
+              11
+            ],
+            [
+              4,
+              2,
+              20
+            ]
+          ]
+        },
+        {
+          "group": "Sales",
+          "count": 56,
+          "status": "reported",
+          "predicted_high_rate": 0.26785714285714285,
+          "macro_precision": 0.547008547008547,
+          "macro_recall": 0.5023391812865496,
+          "macro_f1": 0.5047500872465004,
+          "high_precision": 0.7333333333333333,
+          "high_recall": 0.5,
+          "high_false_positive_rate": 0.11764705882352941,
+          "high_false_negative_rate": 0.5,
+          "actual_class_counts": {
+            "High": 22,
+            "Medium": 15,
+            "Low": 19
+          },
+          "confusion_matrix": [
+            [
+              11,
+              9,
+              2
+            ],
+            [
+              3,
+              8,
+              4
+            ],
+            [
+              1,
+              9,
+              9
+            ]
+          ]
+        }
+      ],
+      "error_rate_differences": {
+        "high_false_positive_rate_max_minus_min": 0.31825037707390647,
+        "high_false_negative_rate_max_minus_min": 0.27380952380952384
+      }
+    },
+    "job_level": {
+      "status": "completed",
+      "groups": [
+        {
+          "group": "Associate",
+          "count": 106,
+          "status": "reported",
+          "predicted_high_rate": 0.4056603773584906,
+          "macro_precision": 0.4474173806609547,
+          "macro_recall": 0.4726817388107711,
+          "macro_f1": 0.452094034733688,
+          "high_precision": 0.5348837209302325,
+          "high_recall": 0.6388888888888888,
+          "high_false_positive_rate": 0.2857142857142857,
+          "high_false_negative_rate": 0.3611111111111111,
+          "actual_class_counts": {
+            "High": 36,
+            "Medium": 39,
+            "Low": 31
+          },
+          "confusion_matrix": [
+            [
+              23,
+              7,
+              6
+            ],
+            [
+              15,
+              9,
+              15
+            ],
+            [
+              5,
+              9,
+              17
+            ]
+          ]
+        },
+        {
+          "group": "Lead",
+          "count": 103,
+          "status": "reported",
+          "predicted_high_rate": 0.3592233009708738,
+          "macro_precision": 0.5098241098241099,
+          "macro_recall": 0.5194805194805195,
+          "macro_f1": 0.5055555555555555,
+          "high_precision": 0.5675675675675675,
+          "high_recall": 0.6,
+          "high_false_positive_rate": 0.23529411764705882,
+          "high_false_negative_rate": 0.4,
+          "actual_class_counts": {
+            "High": 35,
+            "Medium": 33,
+            "Low": 35
+          },
+          "confusion_matrix": [
+            [
+              21,
+              8,
+              6
+            ],
+            [
+              9,
+              9,
+              15
+            ],
+            [
+              7,
+              4,
+              24
+            ]
+          ]
+        },
+        {
+          "group": "Manager",
+          "count": 118,
+          "status": "reported",
+          "predicted_high_rate": 0.3559322033898305,
+          "macro_precision": 0.44291819291819295,
+          "macro_recall": 0.46873550736932595,
+          "macro_f1": 0.4490308167422301,
+          "high_precision": 0.6428571428571429,
+          "high_recall": 0.574468085106383,
+          "high_false_positive_rate": 0.2112676056338028,
+          "high_false_negative_rate": 0.425531914893617,
+          "actual_class_counts": {
+            "High": 47,
+            "Medium": 33,
+            "Low": 38
+          },
+          "confusion_matrix": [
+            [
+              27,
+              11,
+              9
+            ],
+            [
+              13,
+              4,
+              16
+            ],
+            [
+              2,
+              9,
+              27
+            ]
+          ]
+        },
+        {
+          "group": "Senior",
+          "count": 113,
+          "status": "reported",
+          "predicted_high_rate": 0.4424778761061947,
+          "macro_precision": 0.5441263440860215,
+          "macro_recall": 0.5436483739837398,
+          "macro_f1": 0.5290074336205449,
+          "high_precision": 0.46,
+          "high_recall": 0.71875,
+          "high_false_positive_rate": 0.3333333333333333,
+          "high_false_negative_rate": 0.28125,
+          "actual_class_counts": {
+            "High": 32,
+            "Medium": 40,
+            "Low": 41
+          },
+          "confusion_matrix": [
+            [
+              23,
+              5,
+              4
+            ],
+            [
+              17,
+              16,
+              7
+            ],
+            [
+              10,
+              10,
+              21
+            ]
+          ]
+        }
+      ],
+      "error_rate_differences": {
+        "high_false_positive_rate_max_minus_min": 0.1220657276995305,
+        "high_false_negative_rate_max_minus_min": 0.14428191489361702
+      }
+    }
+  }
+}

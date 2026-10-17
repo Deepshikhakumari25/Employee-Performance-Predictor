@@ -1,0 +1,5 @@
+Global permutation importance (held-out data)
+
+Features are shuffled one at a time and the change in macro-F1 is measured. A larger positive value means the fitted model relied more on that input for this evaluation set.
+Top feature by measured importance: on_time_delivery_rate (macro-F1 decrease 0.0533 +/- 0.0224 across shuffles).
+This is a global model-behavior summary, not an explanation of an individual prediction. Importance does not establish causation and may vary with the data.
